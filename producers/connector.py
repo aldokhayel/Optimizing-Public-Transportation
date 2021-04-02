@@ -17,11 +17,8 @@ def configure_connector():
 
     resp = requests.get(f"{KAFKA_CONNECT_URL}/{CONNECTOR_NAME}")
     if resp.status_code == 200:
-        logging.debug("connector already created skipping recreation")
-        return
-
-    resp = requests.get(f"{KAFKA_CONNECT_URL}/{CONNECTOR_NAME}")
-    if resp.status_code == 200:
+        print("connector created successfully.")
+        print("Use kafka-console-consumer and kafka-topics to see data!")
         logging.debug("connector already created skipping recreation")
         return
 
@@ -50,13 +47,12 @@ def configure_connector():
         }),
     )
 
-try:
-    resp.raise_for_status()
-except:
-    print(f"failed creating connector: {json.dumps(resp.json(), indent=2)}")
-    exit(1)
+    try:
+        resp.raise_for_status()
+    except:
+        print(f"failed creating connector: {json.dumps(resp.json(), indent=2)}")
 
-slogging.debug("connector created successfully")
+    logging.debug("connector created successfully")
 
 
 if __name__ == "__main__":
