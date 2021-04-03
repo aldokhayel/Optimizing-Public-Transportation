@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "kafka-avro": "^3.1.1"
+  }
+}

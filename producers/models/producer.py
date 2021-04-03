@@ -90,7 +90,6 @@ class Producer:
                 raise
 
     def close(self):
-        """Prepares the producer for exit by cleaning up the producer"""
 
         if self.producer is None:
             return
@@ -99,12 +98,10 @@ class Producer:
         self.producer.flush()
 
         def time_millis(self):
-        """Use this function to get the key for Kafka Events"""
         return int(round(time.time() * 1000))
 
-        @staticmethod
-        def check_topic_exists(client, topic_name):
-        """Checks if the given topic exists"""
-        topic_metadata = client.list_topics()
-        topics = topic_metadata.topics
-        return topic_name in topics
+#        @staticmethod
+#      def check_topic_exists(client, topic_name):
+#       topic_metadata = client.list_topics()
+#       topics = topic_metadata.topics
+#       return topic_name in topics
