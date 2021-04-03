@@ -92,12 +92,11 @@ class Producer:
     def close(self):
 
         if self.producer is None:
-            return
+            logger.debug("Flushing producer...")
+            self.producer.flush()
 
-        logger.debug("Flushing producer...")
-        self.producer.flush()
 
-        def time_millis(self):
+    def time_millis(self):
         return int(round(time.time() * 1000))
 
 #        @staticmethod
